@@ -19,8 +19,10 @@
             min-height: 100vh;
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
+        /* Исправленный фон с звездами */
         .stars {
             position: fixed;
             top: 0;
@@ -47,6 +49,8 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         header {
@@ -471,4 +475,302 @@
             text-decoration: none;
             font-weight: 800;
             transition: all 0.3s ease;
-            box-shadow: 0 12px 30px rgba(0
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            border: 2px solid transparent;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telegram-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 136, 204, 0.2), 
+                transparent);
+            transition: left 0.5s;
+        }
+
+        .telegram-button:hover::before {
+            left: 100%;
+        }
+
+        .telegram-button:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border-color: #0088cc;
+        }
+
+        .telegram-button i {
+            margin-right: 15px;
+            font-size: 1.6rem;
+        }
+
+        .license-info {
+            background: linear-gradient(135deg, 
+                rgba(255,215,0,0.2), 
+                rgba(255,107,53,0.15));
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .license-info i {
+            color: #ffd700;
+            margin-right: 20px;
+            font-size: 1.4rem;
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 100px;
+            padding: 40px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+            opacity: 0.8;
+            background: linear-gradient(transparent, rgba(0,0,0,0.3));
+            border-radius: 30px 30px 0 0;
+        }
+
+        .age-restriction {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ff4444, #ff6b6b);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 1rem;
+            margin-top: 20px;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 3.5rem;
+            }
+            
+            .telegram-support {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .telegram-icon {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .promo-code {
+                font-size: 3rem;
+                padding: 20px 40px;
+            }
+            
+            .promo-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Анимированные звезды -->
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">GAMERUSH</h1>
+            <p class="tagline">Элитная игровая платформа где рождаются легенды</p>
+            
+            <!-- Промокод -->
+            <div class="promo-banner">
+                <h2 class="promo-title">🚀 ЭКСКЛЮЗИВНЫЙ ПРОМОКОД 🚀</h2>
+                <div class="promo-code">FestRU</div>
+                <p class="promo-description">Активируйте для получения бонуса +200% и эксклюзивного доступа!</p>
+            </div>
+            
+            <div class="warning">
+                <p><strong>⚡ ВАЖНО:</strong> Азартные игры могут вызывать зависимость. Играйте ответственно. Только для лиц старше 18 лет.</p>
+            </div>
+            
+            <div class="license-info">
+                <i class="fas fa-gem"></i> Премиум игры | 
+                <i class="fas fa-shield-alt"></i> Максимальная защита | 
+                <i class="fas fa-bolt"></i> Мгновенные выплаты |
+                <i class="fas fa-crown"></i> Элитный сервис
+            </div>
+        </header>
+
+        <!-- Блок поддержки в Telegram -->
+        <div class="telegram-support">
+            <div class="telegram-icon">
+                <i class="fab fa-telegram"></i>
+            </div>
+            <div class="telegram-content">
+                <h2 class="telegram-title">ПРЕМИУМ ПОДДЕРЖКА 24/7</h2>
+                <p class="telegram-description">Персональный менеджер, эксклюзивные бонусы и мгновенные ответы на все вопросы!</p>
+                <a href="https://t.me/Frenchgvinka" class="telegram-button" target="_blank">
+                    <i class="fab fa-telegram"></i> ПРИСОЕДИНИТЬСЯ К ЭЛИТЕ
+                </a>
+            </div>
+        </div>
+
+        <div class="games-grid">
+            <!-- TowerRush -->
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://avatars.mds.yandex.net/i?id=7dd30d6326969ae7562a84462ffdfd76_sr-5424538-images-thumbs&n=13');">
+                    <div class="game-overlay">
+                        <h3 class="game-title">TOWER RUSH</h3>
+                        <p class="game-description">Эпическая битва за башни с умопомрачительными множителями</p>
+                        <a href="https://1wihrq.life/casino/play/infingames_galaxsys_tower_rush?p=68h4" class="play-button">
+                            <i class="fas fa-play-circle"></i> ПОКОРИТЬ ВЕРШИНУ
+                        </a>
+                    </div>
+                </div>
+                <div class="game-content">
+                    <p>Вознеситесь к самым вершинам и умножьте свой выигрыш до небес! Эксклюзивные бонусные раунды.</p>
+                    <ul class="game-features">
+                        <li>Множители до x5000</li>
+                        <li>Эксклюзивные бонус-уровни</li>
+                        <li>Мгновенные супер-выплаты</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Aviamaster -->
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://contentdeliverynetwork.cc/kirgo1/i/s6/softswiss/Aviamasters.webp');">
+                    <div class="game-overlay">
+                        <h3 class="game-title">AVIAMASTER</h3>
+                        <p class="game-description">Покори небеса и сорви джекпот мечты</p>
+                        <a href="https://1wclaa.life/casino/play/v_bgaming:Aviamasters?p=d1e0" class="play-button">
+                            <i class="fas fa-fighter-jet"></i> ВЗЛЕТЕТЬ К ПОБЕДЕ
+                        </a>
+                    </div>
+                </div>
+                <div class="game-content">
+                    <p>Стань пилотом удачи и выиграй прогрессивный джекпот! Бонусные полеты открывают новые горизонты.</p>
+                    <ul class="game-features">
+                        <li>Прогрессивный супер-джекпот</li>
+                        <li>Эксклюзивные бонусные полеты</li>
+                        <li>Максимальная волатильность</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ice Fishing -->
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://i.mycdn.me/getVideoPreview?id=8914645748387&idx=13&type=39&tkn=_M-08_Oz-gNlImS7wgS7674NwI8&fn=vid_x');">
+                    <div class="game-overlay">
+                        <h3 class="game-title">ICE FISHING</h3>
+                        <p class="game-description">Ледяная рыбалка с золотыми уловами</p>
+                        <a href="https://1wclaa.life/casino/play/v_evolution:1winicefishing?p=d1e0" class="play-button">
+                            <i class="fas fa-fish"></i> ПОЙМАТЬ УДАЧУ
+                        </a>
+                    </div>
+                </div>
+                <div class="game-content">
+                    <p>Окунитесь в атмосферу арктической рыбалки и поймайте свой золотой трофей! Уникальные коллекционные бонусы.</p>
+                    <ul class="game-features">
+                        <li>Уникальная арктическая механика</li>
+                        <li>Эксклюзивные коллекционные трофеи</li>
+                        <li>Расслабляющий премиум-геймплей</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="age-restriction">
+            <i class="fas fa-exclamation-triangle"></i> ЭКСКЛЮЗИВНО 18+
+        </div>
+
+        <footer>
+            <p>© 2024 GAMERUSH ELITE. Элитная игровая платформа премиум-класса. Лицензионные азартные игры. Только для совершеннолетних.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Создание анимированных звезд
+        function createStars() {
+            const stars = document.getElementById('stars');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${posX}%`;
+                star.style.top = `${posY}%`;
+                star.style.animationDelay = `${delay}s`;
+                
+                stars.appendChild(star);
+            }
+        }
+
+        // Анимация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            
+            const cards = document.querySelectorAll('.game-card');
+            const telegramSupport = document.querySelector('.telegram-support');
+            const promoBanner = document.querySelector('.promo-banner');
+            
+            // Анимация для карточек игр
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px) scale(0.8) rotateX(10deg)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0) scale(1) rotateX(0)';
+                }, 400 * index);
+            });
+            
+            // Анимация для блока поддержки
+            setTimeout(() => {
+                telegramSupport.style.opacity = '0';
+                telegramSupport.style.transform = 'translateY(50px) scale(0.9)';
+                telegramSupport.style.transition = 'all 0.8s ease';
+                
+                setTimeout(() => {
+                    telegramSupport.style.opacity = '1';
+                    telegramSupport.style.transform = 'translateY(0) scale(1)';
+                }, 200);
+            }, 1200);
+
+            // Анимация для промо-баннера
+            setTimeout(() => {
+                promoBanner.style.opacity = '0';
+                promoBanner.style.transform = 'scale(0.7) rotate(-5deg)';
+                promoBanner.style.transition = 'all 0.8s ease';
+                
+                setTimeout(() => {
+                    promoBanner.style.opacity = '1';
+                    promoBanner.style.transform = 'scale(1) rotate(0)';
+                }, 200);
+            }, 600);
+        });
+    </script>
+</body>
+</html>
