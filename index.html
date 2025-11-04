@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameRush - Элитная игровая платформа</title>
+    <title>GameRush - Космическая игровая платформа</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,7 +14,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0c0c2e 0%, #1a1a4d 50%, #2d1a4d 100%);
+            background: linear-gradient(135deg, #0c0c2e 0%, #1a1a4d 30%, #2d1a4d 60%, #4a1a4d 100%);
             color: #fff;
             min-height: 100vh;
             line-height: 1.6;
@@ -22,8 +22,8 @@
             position: relative;
         }
 
-        /* Исправленный фон с звездами */
-        .stars {
+        /* Космический фон с планетами */
+        .cosmic-background {
             position: fixed;
             top: 0;
             left: 0;
@@ -31,6 +31,59 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
+            overflow: hidden;
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: float 20s infinite linear;
+        }
+
+        .planet-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at 30% 30%, #ff6b35, #ff4081, #8a2be2);
+            top: 10%;
+            right: 5%;
+            box-shadow: 
+                0 0 100px rgba(255, 107, 53, 0.6),
+                inset -20px -20px 50px rgba(0,0,0,0.5);
+            animation-duration: 25s;
+        }
+
+        .planet-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 40% 40%, #00ffff, #0088cc, #0044ff);
+            bottom: 15%;
+            left: 8%;
+            box-shadow: 
+                0 0 80px rgba(0, 255, 255, 0.5),
+                inset -15px -15px 40px rgba(0,0,0,0.4);
+            animation-duration: 30s;
+            animation-direction: reverse;
+        }
+
+        .planet-3 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 50% 50%, #ffd700, #ff6b35, #ff0000);
+            top: 60%;
+            right: 20%;
+            box-shadow: 
+                0 0 60px rgba(255, 215, 0, 0.6),
+                inset -10px -10px 30px rgba(0,0,0,0.3);
+            animation-duration: 35s;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .star {
@@ -45,6 +98,41 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
 
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, 10px) rotate(90deg); }
+            50% { transform: translate(0, 20px) rotate(180deg); }
+            75% { transform: translate(-10px, 10px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        .nebula {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: nebulaFloat 40s infinite linear;
+        }
+
+        .nebula-1 {
+            top: 20%;
+            left: 10%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
+        }
+
+        .nebula-2 {
+            bottom: 20%;
+            right: 10%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.06) 0%, transparent 70%);
+        }
+
+        @keyframes nebulaFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, 10px) scale(1.1); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -55,180 +143,236 @@
 
         header {
             text-align: center;
-            padding: 60px 0 30px;
+            padding: 80px 0 40px;
             position: relative;
         }
 
         .logo {
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #ffd700, #ff6b35, #ff4081, #00ffff);
+            background: linear-gradient(45deg, #ffd700, #ff6b35, #ff4081, #00ffff, #0088cc);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 20px;
-            text-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
-            animation: rainbow 3s ease-in-out infinite;
+            margin-bottom: 30px;
+            text-shadow: 0 0 80px rgba(255, 215, 0, 0.7);
+            animation: rainbow 4s ease-in-out infinite;
             position: relative;
+            letter-spacing: 3px;
         }
 
         @keyframes rainbow {
-            0%, 100% { filter: hue-rotate(0deg); }
-            50% { filter: hue-rotate(180deg); }
+            0%, 100% { 
+                filter: hue-rotate(0deg);
+                text-shadow: 0 0 80px rgba(255, 215, 0, 0.7);
+            }
+            25% { 
+                filter: hue-rotate(90deg);
+                text-shadow: 0 0 80px rgba(255, 107, 53, 0.7);
+            }
+            50% { 
+                filter: hue-rotate(180deg);
+                text-shadow: 0 0 80px rgba(255, 64, 129, 0.7);
+            }
+            75% { 
+                filter: hue-rotate(270deg);
+                text-shadow: 0 0 80px rgba(0, 255, 255, 0.7);
+            }
         }
 
         .logo::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #ffd700, #ff6b35, transparent);
+            width: 300px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ffd700, #ff6b35, #ff4081, #00ffff, transparent);
             border-radius: 50%;
+            animation: lineGlow 3s infinite;
+        }
+
+        @keyframes lineGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .tagline {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             opacity: 0.9;
-            margin-bottom: 40px;
-            max-width: 700px;
+            margin-bottom: 50px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+            background: linear-gradient(45deg, #fff, #e3f2fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
         .promo-banner {
             background: linear-gradient(135deg, 
-                rgba(255, 107, 53, 0.9), 
-                rgba(255, 215, 0, 0.8), 
-                rgba(255, 64, 129, 0.9));
-            border-radius: 25px;
-            padding: 40px;
-            margin: 40px 0;
+                rgba(255, 107, 53, 0.95), 
+                rgba(255, 215, 0, 0.9), 
+                rgba(255, 64, 129, 0.95));
+            border-radius: 30px;
+            padding: 50px;
+            margin: 60px 0;
             text-align: center;
             box-shadow: 
-                0 20px 40px rgba(255, 107, 53, 0.4),
-                0 0 100px rgba(255, 215, 0, 0.3),
-                inset 0 1px 0 rgba(255,255,255,0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-            backdrop-filter: blur(20px);
+                0 30px 60px rgba(255, 107, 53, 0.6),
+                0 0 200px rgba(255, 215, 0, 0.5),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            animation: promoGlow 3s ease-in-out infinite alternate;
+            backdrop-filter: blur(25px);
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
         }
 
         .promo-banner::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: -150%;
+            left: -150%;
+            width: 400%;
+            height: 400%;
             background: linear-gradient(45deg, 
                 transparent, 
-                rgba(255,255,255,0.1), 
+                rgba(255,255,255,0.2), 
                 transparent);
             transform: rotate(45deg);
-            animation: shine 3s infinite;
+            animation: promoShine 4s infinite;
         }
 
-        @keyframes shine {
+        @keyframes promoShine {
             0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
-        @keyframes glow {
+        @keyframes promoGlow {
             from {
                 box-shadow: 
-                    0 20px 40px rgba(255, 107, 53, 0.4),
-                    0 0 100px rgba(255, 215, 0, 0.3);
+                    0 30px 60px rgba(255, 107, 53, 0.6),
+                    0 0 200px rgba(255, 215, 0, 0.5);
             }
             to {
                 box-shadow: 
-                    0 25px 50px rgba(255, 107, 53, 0.6),
-                    0 0 150px rgba(255, 215, 0, 0.5);
+                    0 40px 80px rgba(255, 107, 53, 0.8),
+                    0 0 300px rgba(255, 215, 0, 0.7);
             }
         }
 
         .promo-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 25px;
             color: #0c0c2e;
-            text-shadow: 0 2px 10px rgba(255,255,255,0.5);
+            text-shadow: 0 2px 15px rgba(255,255,255,0.8);
             position: relative;
             z-index: 2;
+            letter-spacing: 2px;
         }
 
         .promo-code {
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #0c0c2e, #1a1a4d);
+            background: linear-gradient(45deg, #0c0c2e, #1a1a4d, #2d1a4d);
             color: #ffd700;
-            padding: 25px 50px;
-            border-radius: 20px;
+            padding: 30px 60px;
+            border-radius: 25px;
             display: inline-block;
-            margin: 25px 0;
-            border: 4px solid rgba(255, 215, 0, 0.5);
-            animation: bounce 1.5s infinite alternate;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            margin: 30px 0;
+            border: 5px solid rgba(255, 215, 0, 0.6);
+            animation: codeBounce 2s infinite alternate;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 1);
             box-shadow: 
-                0 10px 30px rgba(0,0,0,0.5),
-                inset 0 1px 0 rgba(255,255,255,0.2);
+                0 15px 40px rgba(0,0,0,0.6),
+                inset 0 1px 0 rgba(255,255,255,0.3);
             position: relative;
             z-index: 2;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 5px;
         }
 
-        @keyframes bounce {
-            from { transform: translateY(0px) scale(1); }
-            to { transform: translateY(-10px) scale(1.05); }
+        @keyframes codeBounce {
+            from { 
+                transform: translateY(0px) scale(1) rotate(-1deg);
+            }
+            to { 
+                transform: translateY(-15px) scale(1.05) rotate(1deg);
+            }
         }
 
         .promo-description {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: #0c0c2e;
-            font-weight: 700;
+            font-weight: 800;
             opacity: 0.95;
             position: relative;
             z-index: 2;
+            text-shadow: 0 1px 5px rgba(255,255,255,0.5);
         }
 
         .warning {
             background: linear-gradient(135deg, 
-                rgba(255, 68, 68, 0.2), 
-                rgba(255, 107, 107, 0.15));
-            border-left: 5px solid #ff4444;
-            padding: 25px;
-            margin: 30px auto;
-            border-radius: 15px;
-            max-width: 900px;
-            font-size: 1rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 68, 68, 0.3);
+                rgba(255, 68, 68, 0.25), 
+                rgba(255, 107, 107, 0.2));
+            border-left: 6px solid #ff4444;
+            padding: 30px;
+            margin: 40px auto;
+            border-radius: 20px;
+            max-width: 1000px;
+            font-size: 1.1rem;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 68, 68, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 68, 68, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .warning::before {
+            content: '⚡';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            opacity: 0.3;
+            animation: warningPulse 2s infinite;
+        }
+
+        @keyframes warningPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.5; }
         }
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
+            margin-top: 80px;
         }
 
         .game-card {
             background: linear-gradient(135deg, 
-                rgba(255,255,255,0.1), 
-                rgba(255,255,255,0.05));
-            border-radius: 25px;
+                rgba(255,255,255,0.12), 
+                rgba(255,255,255,0.06));
+            border-radius: 30px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(255, 215, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            backdrop-filter: blur(20px);
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 0 2px rgba(255, 215, 0, 0.15);
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            backdrop-filter: blur(25px);
             position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
         .game-card::before {
@@ -237,10 +381,11 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #ff6b35, #ffd700, #ff4081, #00ffff);
-            background-size: 200% 100%;
-            animation: gradientShift 3s infinite linear;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6b35, #ffd700, #ff4081, #00ffff, #0088cc);
+            background-size: 300% 100%;
+            animation: gradientShift 4s infinite linear;
+            z-index: 2;
         }
 
         @keyframes gradientShift {
@@ -250,26 +395,26 @@
         }
 
         .game-card:hover {
-            transform: translateY(-20px) scale(1.03);
+            transform: translateY(-25px) scale(1.05) rotateX(5deg);
             box-shadow: 
-                0 40px 80px rgba(0, 0, 0, 0.6),
-                0 0 100px rgba(255, 215, 0, 0.2),
-                0 0 0 2px rgba(255, 215, 0, 0.3);
+                0 50px 100px rgba(0, 0, 0, 0.7),
+                0 0 200px rgba(255, 215, 0, 0.3),
+                0 0 0 3px rgba(255, 215, 0, 0.4);
         }
 
         .game-image {
-            height: 250px;
+            height: 280px;
             width: 100%;
             background-size: cover;
             background-position: center;
             position: relative;
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
             overflow: hidden;
         }
 
         .game-card:hover .game-image {
-            transform: scale(1.1);
-            filter: brightness(1.2) contrast(1.1);
+            transform: scale(1.15);
+            filter: brightness(1.3) contrast(1.2) saturate(1.4);
         }
 
         .game-overlay {
@@ -278,49 +423,52 @@
             left: 0;
             right: 0;
             background: linear-gradient(to top, 
-                rgba(12,12,46,0.95) 0%, 
-                rgba(12,12,46,0.7) 50%,
+                rgba(12,12,46,0.98) 0%, 
+                rgba(12,12,46,0.8) 50%,
                 transparent 100%);
-            padding: 30px;
+            padding: 35px;
+            z-index: 2;
         }
 
         .game-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: #ffd700;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.8);
-            background: linear-gradient(45deg, #ffd700, #ffb347);
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            background: linear-gradient(45deg, #ffd700, #ffb347, #ff6b35);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.9);
+            letter-spacing: 1px;
         }
 
         .game-description {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+            font-weight: 300;
         }
 
         .play-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(45deg, #ff6b35, #ffd700);
+            background: linear-gradient(45deg, #ff6b35, #ffd700, #ff6b35);
             color: #0c0c2e;
-            padding: 15px 30px;
-            border-radius: 50px;
+            padding: 18px 35px;
+            border-radius: 60px;
             text-decoration: none;
-            font-weight: 800;
-            transition: all 0.3s ease;
+            font-weight: 900;
+            transition: all 0.4s ease;
             box-shadow: 
-                0 8px 25px rgba(255, 107, 53, 0.5),
-                inset 0 1px 0 rgba(255,255,255,0.3);
-            border: 2px solid transparent;
-            font-size: 1.1rem;
+                0 10px 30px rgba(255, 107, 53, 0.6),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+            border: 3px solid transparent;
+            font-size: 1.2rem;
             position: relative;
             overflow: hidden;
+            letter-spacing: 1px;
         }
 
         .play-button::before {
@@ -332,9 +480,9 @@
             height: 100%;
             background: linear-gradient(90deg, 
                 transparent, 
-                rgba(255,255,255,0.4), 
+                rgba(255,255,255,0.6), 
                 transparent);
-            transition: left 0.5s;
+            transition: left 0.6s;
         }
 
         .play-button:hover::before {
@@ -342,103 +490,131 @@
         }
 
         .play-button:hover {
-            transform: scale(1.15) translateY(-2px);
+            transform: scale(1.2) translateY(-3px);
             box-shadow: 
-                0 15px 35px rgba(255, 107, 53, 0.7),
-                inset 0 1px 0 rgba(255,255,255,0.4);
-            border-color: rgba(255, 255, 255, 0.5);
+                0 20px 50px rgba(255, 107, 53, 0.8),
+                inset 0 1px 0 rgba(255,255,255,0.5);
+            border-color: rgba(255, 255, 255, 0.6);
         }
 
         .game-content {
-            padding: 30px;
+            padding: 35px;
         }
 
         .game-features {
             list-style: none;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .game-features li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 15px;
             transition: all 0.3s ease;
             border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-features li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255,215,0,0.2), 
+                transparent);
+            transition: left 0.5s;
+        }
+
+        .game-features li:hover::before {
+            left: 100%;
         }
 
         .game-features li:hover {
-            background: rgba(255, 215, 0, 0.15);
-            border-color: rgba(255, 215, 0, 0.3);
-            transform: translateX(10px);
+            background: rgba(255, 215, 0, 0.18);
+            border-color: rgba(255, 215, 0, 0.4);
+            transform: translateX(15px) scale(1.02);
         }
 
         .game-features li:before {
-            content: "✨";
+            content: "🚀";
             color: #ffd700;
-            margin-right: 15px;
-            font-weight: bold;
-            font-size: 1.3rem;
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+            margin-right: 18px;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+            position: relative;
+            z-index: 1;
         }
 
         /* Стили для поддержки в Telegram */
         .telegram-support {
             background: linear-gradient(135deg, 
-                rgba(0, 136, 204, 0.9), 
-                rgba(52, 183, 241, 0.8));
-            border-radius: 25px;
-            padding: 40px;
-            margin: 60px 0;
+                rgba(0, 136, 204, 0.95), 
+                rgba(52, 183, 241, 0.9));
+            border-radius: 30px;
+            padding: 50px;
+            margin: 80px 0;
             display: flex;
             align-items: center;
             box-shadow: 
-                0 25px 50px rgba(0, 136, 204, 0.5),
-                0 0 100px rgba(52, 183, 241, 0.3);
-            transition: all 0.4s ease;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(20px);
+                0 35px 70px rgba(0, 136, 204, 0.6),
+                0 0 200px rgba(52, 183, 241, 0.4);
+            transition: all 0.5s ease;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(25px);
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
         }
 
         .telegram-support::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: -150%;
+            left: -150%;
+            width: 400%;
+            height: 400%;
             background: linear-gradient(45deg, 
                 transparent, 
-                rgba(255,255,255,0.1), 
+                rgba(255,255,255,0.15), 
                 transparent);
             transform: rotate(45deg);
-            animation: shine 4s infinite;
+            animation: telegramShine 5s infinite;
+        }
+
+        @keyframes telegramShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .telegram-support:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-15px) scale(1.03) rotateX(2deg);
             box-shadow: 
-                0 35px 70px rgba(0, 136, 204, 0.6),
-                0 0 150px rgba(52, 183, 241, 0.4);
+                0 50px 100px rgba(0, 136, 204, 0.7),
+                0 0 300px rgba(52, 183, 241, 0.5);
         }
 
         .telegram-icon {
-            font-size: 5rem;
-            margin-right: 40px;
+            font-size: 6rem;
+            margin-right: 50px;
             color: white;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5));
             position: relative;
             z-index: 2;
-            animation: float 3s ease-in-out infinite;
+            animation: telegramFloat 4s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        @keyframes telegramFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(2deg); }
+            66% { transform: translateY(5px) rotate(-2deg); }
         }
 
         .telegram-content {
@@ -448,21 +624,24 @@
         }
 
         .telegram-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.5);
-            background: linear-gradient(45deg, #fff, #e3f2fd);
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+            background: linear-gradient(45deg, #fff, #e3f2fd, #bbdefb);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            letter-spacing: 2px;
         }
 
         .telegram-description {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
+            font-size: 1.4rem;
+            margin-bottom: 30px;
             opacity: 0.95;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+            font-weight: 300;
+            line-height: 1.8;
         }
 
         .telegram-button {
@@ -470,16 +649,17 @@
             align-items: center;
             background: linear-gradient(45deg, #fff, #e3f2fd);
             color: #0088cc;
-            padding: 18px 35px;
-            border-radius: 50px;
+            padding: 20px 40px;
+            border-radius: 60px;
             text-decoration: none;
-            font-weight: 800;
-            transition: all 0.3s ease;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-            border: 2px solid transparent;
-            font-size: 1.2rem;
+            font-weight: 900;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 3px solid transparent;
+            font-size: 1.3rem;
             position: relative;
             overflow: hidden;
+            letter-spacing: 1px;
         }
 
         .telegram-button::before {
@@ -491,9 +671,9 @@
             height: 100%;
             background: linear-gradient(90deg, 
                 transparent, 
-                rgba(0, 136, 204, 0.2), 
+                rgba(0, 136, 204, 0.3), 
                 transparent);
-            transition: left 0.5s;
+            transition: left 0.6s;
         }
 
         .telegram-button:hover::before {
@@ -501,59 +681,106 @@
         }
 
         .telegram-button:hover {
-            transform: scale(1.1) translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transform: scale(1.15) translateY(-4px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
             border-color: #0088cc;
         }
 
         .telegram-button i {
-            margin-right: 15px;
-            font-size: 1.6rem;
+            margin-right: 18px;
+            font-size: 1.8rem;
         }
 
         .license-info {
             background: linear-gradient(135deg, 
-                rgba(255,215,0,0.2), 
-                rgba(255,107,53,0.15));
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px 0;
+                rgba(255,215,0,0.25), 
+                rgba(255,107,53,0.2));
+            border-radius: 25px;
+            padding: 35px;
+            margin: 50px 0;
             text-align: center;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            backdrop-filter: blur(25px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .license-info::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 2rem;
+            opacity: 0.4;
+            animation: sparkle 3s infinite;
+        }
+
+        .license-info::after {
+            content: '✨';
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 2rem;
+            opacity: 0.4;
+            animation: sparkle 3s infinite reverse;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.4; }
+            50% { transform: scale(1.3) rotate(180deg); opacity: 0.8; }
         }
 
         .license-info i {
             color: #ffd700;
-            margin-right: 20px;
-            font-size: 1.4rem;
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+            margin-right: 25px;
+            font-size: 1.6rem;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
         }
 
         footer {
             text-align: center;
-            margin-top: 100px;
-            padding: 40px;
-            border-top: 2px solid rgba(255, 255, 255, 0.1);
-            font-size: 1rem;
-            opacity: 0.8;
-            background: linear-gradient(transparent, rgba(0,0,0,0.3));
-            border-radius: 30px 30px 0 0;
+            margin-top: 120px;
+            padding: 50px;
+            border-top: 3px solid rgba(255, 255, 255, 0.15);
+            font-size: 1.1rem;
+            opacity: 0.9;
+            background: linear-gradient(transparent, rgba(0,0,0,0.4));
+            border-radius: 40px 40px 0 0;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffd700, #ff6b35, transparent);
+            border-radius: 50%;
         }
 
         .age-restriction {
             display: inline-flex;
             align-items: center;
-            background: linear-gradient(135deg, #ff4444, #ff6b6b);
+            background: linear-gradient(135deg, #ff4444, #ff6b6b, #ff4444);
             color: white;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 1rem;
-            margin-top: 20px;
-            font-weight: 700;
-            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            margin-top: 25px;
+            font-weight: 900;
+            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.5);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            letter-spacing: 1px;
+            animation: restrictionPulse 2s infinite;
+        }
+
+        @keyframes restrictionPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         @media (max-width: 768px) {
@@ -576,41 +803,54 @@
             }
             
             .promo-code {
-                font-size: 3rem;
-                padding: 20px 40px;
+                font-size: 3.5rem;
+                padding: 25px 45px;
             }
             
             .promo-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+
+            .planet-1,
+            .planet-2,
+            .planet-3 {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Анимированные звезды -->
-    <div class="stars" id="stars"></div>
+    <!-- Космический фон с планетами -->
+    <div class="cosmic-background">
+        <div class="stars" id="stars"></div>
+        <div class="planet planet-1"></div>
+        <div class="planet planet-2"></div>
+        <div class="planet planet-3"></div>
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+    </div>
 
     <div class="container">
         <header>
             <h1 class="logo">GAMERUSH</h1>
-            <p class="tagline">Элитная игровая платформа где рождаются легенды</p>
+            <p class="tagline">Космическая игровая платформа где рождаются легендарные победы</p>
             
             <!-- Промокод -->
             <div class="promo-banner">
-                <h2 class="promo-title">🚀 ЭКСКЛЮЗИВНЫЙ ПРОМОКОД 🚀</h2>
+                <h2 class="promo-title">🚀 ЭКСКЛЮЗИВНЫЙ КОСМИЧЕСКИЙ ПРОМОКОД 🚀</h2>
                 <div class="promo-code">FestRU</div>
-                <p class="promo-description">Активируйте для получения бонуса +200% и эксклюзивного доступа!</p>
+                <p class="promo-description">Активируйте для получения космического бонуса +300% и доступа к эксклюзивным играм!</p>
             </div>
             
             <div class="warning">
-                <p><strong>⚡ ВАЖНО:</strong> Азартные игры могут вызывать зависимость. Играйте ответственно. Только для лиц старше 18 лет.</p>
+                <p><strong>🌌 ВАЖНО:</strong> Азартные игры могут вызывать зависимость. Играйте ответственно. Только для лиц старше 18 лет. Погрузитесь в космические приключения с умом!</p>
             </div>
             
             <div class="license-info">
-                <i class="fas fa-gem"></i> Премиум игры | 
-                <i class="fas fa-shield-alt"></i> Максимальная защита | 
-                <i class="fas fa-bolt"></i> Мгновенные выплаты |
-                <i class="fas fa-crown"></i> Элитный сервис
+                <i class="fas fa-rocket"></i> Космические игры | 
+                <i class="fas fa-shield-alt"></i> Галактическая защита | 
+                <i class="fas fa-bolt"></i> Молниеносные выплаты |
+                <i class="fas fa-crown"></i> Звездный сервис
             </div>
         </header>
 
@@ -620,10 +860,11 @@
                 <i class="fab fa-telegram"></i>
             </div>
             <div class="telegram-content">
-                <h2 class="telegram-title">ПРЕМИУМ ПОДДЕРЖКА 24/7</h2>
-                <p class="telegram-description">Персональный менеджер, эксклюзивные бонусы и мгновенные ответы на все вопросы!</p>
-                <a href="https://t.me/Frenchgvinka" class="telegram-button" target="_blank">
-                    <i class="fab fa-telegram"></i> ПРИСОЕДИНИТЬСЯ К ЭЛИТЕ
+                <h2 class="telegram-title">КОСМИЧЕСКАЯ ПОДДЕРЖКА 24/7</h2>
+                <p class="telegram-description">Наши специалисты готовы помочь вам в любое время суток! Персональный менеджер, эксклюзивные космические бонусы и мгновенные ответы на все вопросы о межгалактических выигрышах!</p>
+                <!-- ОБНОВЛЕННАЯ ССЫЛКА TELEGRAM -->
+                <a href="https://t.me/Fest000" class="telegram-button" target="_blank">
+                    <i class="fab fa-telegram"></i> СТАТЬ КОСМИЧЕСКИМ ИГРОКОМ
                 </a>
             </div>
         </div>
@@ -634,18 +875,19 @@
                 <div class="game-image" style="background-image: url('https://avatars.mds.yandex.net/i?id=7dd30d6326969ae7562a84462ffdfd76_sr-5424538-images-thumbs&n=13');">
                     <div class="game-overlay">
                         <h3 class="game-title">TOWER RUSH</h3>
-                        <p class="game-description">Эпическая битва за башни с умопомрачительными множителями</p>
-                        <a href="https://1wihrq.life/casino/play/infingames_galaxsys_tower_rush?p=68h4" class="play-button">
-                            <i class="fas fa-play-circle"></i> ПОКОРИТЬ ВЕРШИНУ
+                        <p class="game-description">Космическая битва за башни с межгалактическими множителями</p>
+                        <!-- ОБНОВЛЕННАЯ ССЫЛКА TOWERRUSH -->
+                        <a href="https://1wclaa.life/casino/play/infingames_galaxsys_tower_rush?demo=true&open=register&p=bn6e" class="play-button">
+                            <i class="fas fa-rocket"></i> СТАРТОВАТЬ К ЗВЕЗДАМ
                         </a>
                     </div>
                 </div>
                 <div class="game-content">
-                    <p>Вознеситесь к самым вершинам и умножьте свой выигрыш до небес! Эксклюзивные бонусные раунды.</p>
+                    <p>Вознеситесь к самым вершинам космоса и умножьте свой выигрыш до межгалактических масштабов! Эксклюзивные бонусные раунды с космическими множителями.</p>
                     <ul class="game-features">
-                        <li>Множители до x5000</li>
-                        <li>Эксклюзивные бонус-уровни</li>
-                        <li>Мгновенные супер-выплаты</li>
+                        <li>Множители до x10000</li>
+                        <li>Космические бонус-уровни</li>
+                        <li>Мгновенные межпланетные выплаты</li>
                     </ul>
                 </div>
             </div>
@@ -655,18 +897,19 @@
                 <div class="game-image" style="background-image: url('https://contentdeliverynetwork.cc/kirgo1/i/s6/softswiss/Aviamasters.webp');">
                     <div class="game-overlay">
                         <h3 class="game-title">AVIAMASTER</h3>
-                        <p class="game-description">Покори небеса и сорви джекпот мечты</p>
-                        <a href="https://1wclaa.life/casino/play/v_bgaming:Aviamasters?p=d1e0" class="play-button">
-                            <i class="fas fa-fighter-jet"></i> ВЗЛЕТЕТЬ К ПОБЕДЕ
+                        <p class="game-description">Покори галактику и сорви космический джекпот</p>
+                        <!-- ОБНОВЛЕННАЯ ССЫЛКА AVIAMASTER -->
+                        <a href="https://1wclaa.life/v3/5267/fortune-wheel-aviamasters&p=bn6e" class="play-button">
+                            <i class="fas fa-space-shuttle"></i> ВЗЛЕТЕТЬ К ГАЛАКТИКЕ
                         </a>
                     </div>
                 </div>
                 <div class="game-content">
-                    <p>Стань пилотом удачи и выиграй прогрессивный джекпот! Бонусные полеты открывают новые горизонты.</p>
+                    <p>Стань пилотом космического корабля удачи и выиграй прогрессивный галактический джекпот! Бонусные полеты через туманности открывают новые горизонты.</p>
                     <ul class="game-features">
-                        <li>Прогрессивный супер-джекпот</li>
-                        <li>Эксклюзивные бонусные полеты</li>
-                        <li>Максимальная волатильность</li>
+                        <li>Прогрессивный галактический джекпот</li>
+                        <li>Эксклюзивные космические полеты</li>
+                        <li>Максимальная космическая волатильность</li>
                     </ul>
                 </div>
             </div>
@@ -676,29 +919,30 @@
                 <div class="game-image" style="background-image: url('https://i.mycdn.me/getVideoPreview?id=8914645748387&idx=13&type=39&tkn=_M-08_Oz-gNlImS7wgS7674NwI8&fn=vid_x');">
                     <div class="game-overlay">
                         <h3 class="game-title">ICE FISHING</h3>
-                        <p class="game-description">Ледяная рыбалка с золотыми уловами</p>
-                        <a href="https://1wclaa.life/casino/play/v_evolution:1winicefishing?p=d1e0" class="play-button">
-                            <i class="fas fa-fish"></i> ПОЙМАТЬ УДАЧУ
+                        <p class="game-description">Ледяная рыбалка на далеких планетах с золотыми уловами</p>
+                        <!-- ОБНОВЛЕННАЯ ССЫЛКА ICE FISHING -->
+                        <a href="https://1wclaa.life/casino/play/v_evolution:1winicefishing&p=bn6e" class="play-button">
+                            <i class="fas fa-fish"></i> ПОЙМАТЬ КОСМИЧЕСКУЮ УДАЧУ
                         </a>
                     </div>
                 </div>
                 <div class="game-content">
-                    <p>Окунитесь в атмосферу арктической рыбалки и поймайте свой золотой трофей! Уникальные коллекционные бонусы.</p>
+                    <p>Окунитесь в атмосферу арктической рыбалки на ледяных планетах и поймайте свой золотой трофей! Уникальные коллекционные космические бонусы.</p>
                     <ul class="game-features">
-                        <li>Уникальная арктическая механика</li>
-                        <li>Эксклюзивные коллекционные трофеи</li>
-                        <li>Расслабляющий премиум-геймплей</li>
+                        <li>Уникальная межпланетная механика</li>
+                        <li>Эксклюзивные космические трофеи</li>
+                        <li>Расслабляющий галактический геймплей</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="age-restriction">
-            <i class="fas fa-exclamation-triangle"></i> ЭКСКЛЮЗИВНО 18+
+            <i class="fas fa-user-astronaut"></i> КОСМИЧЕСКИ ЭКСКЛЮЗИВНО 18+
         </div>
 
         <footer>
-            <p>© 2024 GAMERUSH ELITE. Элитная игровая платформа премиум-класса. Лицензионные азартные игры. Только для совершеннолетних.</p>
+            <p>© 2024 GAMERUSH COSMIC. Космическая игровая платформа премиум-класса. Лицензионные азартные игры. Только для совершеннолетних космических путешественников.</p>
         </footer>
     </div>
 
@@ -706,22 +950,24 @@
         // Создание анимированных звезд
         function createStars() {
             const stars = document.getElementById('stars');
-            const starCount = 150;
+            const starCount = 200;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 
-                const size = Math.random() * 3;
+                const size = Math.random() * 4;
                 const posX = Math.random() * 100;
                 const posY = Math.random() * 100;
-                const delay = Math.random() * 5;
+                const delay = Math.random() * 8;
+                const duration = 3 + Math.random() * 4;
                 
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 star.style.left = `${posX}%`;
                 star.style.top = `${posY}%`;
                 star.style.animationDelay = `${delay}s`;
+                star.style.animationDuration = `${duration}s`;
                 
                 stars.appendChild(star);
             }
@@ -738,38 +984,38 @@
             // Анимация для карточек игр
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
-                card.style.transform = 'translateY(50px) scale(0.8) rotateX(10deg)';
+                card.style.transform = 'translateY(60px) scale(0.7) rotateX(15deg)';
                 
                 setTimeout(() => {
-                    card.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    card.style.transition = 'all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0) scale(1) rotateX(0)';
-                }, 400 * index);
+                }, 500 * index);
             });
             
             // Анимация для блока поддержки
             setTimeout(() => {
                 telegramSupport.style.opacity = '0';
-                telegramSupport.style.transform = 'translateY(50px) scale(0.9)';
-                telegramSupport.style.transition = 'all 0.8s ease';
+                telegramSupport.style.transform = 'translateY(60px) scale(0.8)';
+                telegramSupport.style.transition = 'all 1s ease';
                 
                 setTimeout(() => {
                     telegramSupport.style.opacity = '1';
                     telegramSupport.style.transform = 'translateY(0) scale(1)';
-                }, 200);
-            }, 1200);
+                }, 300);
+            }, 1500);
 
             // Анимация для промо-баннера
             setTimeout(() => {
                 promoBanner.style.opacity = '0';
-                promoBanner.style.transform = 'scale(0.7) rotate(-5deg)';
-                promoBanner.style.transition = 'all 0.8s ease';
+                promoBanner.style.transform = 'scale(0.6) rotate(-8deg)';
+                promoBanner.style.transition = 'all 1s ease';
                 
                 setTimeout(() => {
                     promoBanner.style.opacity = '1';
                     promoBanner.style.transform = 'scale(1) rotate(0)';
-                }, 200);
-            }, 600);
+                }, 300);
+            }, 800);
         });
     </script>
 </body>
